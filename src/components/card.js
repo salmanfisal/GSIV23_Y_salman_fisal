@@ -79,6 +79,7 @@ function Card({ inputNav, state }) {
               </div>
             </div>
           ))}
+          </div>
         <div className="pagination">
           <button
             onClick={() => handlePageChange(currentPage - 1)}
@@ -102,7 +103,7 @@ function Card({ inputNav, state }) {
             Next
           </button>
         </div>
-      </div>
+      
     </>
   );
 }

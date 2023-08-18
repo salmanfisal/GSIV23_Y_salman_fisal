@@ -31,7 +31,8 @@ function Nav({ inputNav }) {
                 onChange={inputHandler}
               />
             </li>
-            <li>home</li>
+            
+            <li><a href="/">home</a></li>
           </ul>
         </div>
         {filterResult.map((movie) => (

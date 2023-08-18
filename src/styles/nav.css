@@ -5,6 +5,7 @@
   background-color: rgb(165, 165, 207);
   position: relative;
   border-radius:  0px 0px 20px 20px ;
+  top:-15px;
 }
 
 .navItems {
@@ -42,4 +43,8 @@
   margin-top: 10px;
   overflow: hidden;
   gap: 20px;
+}
+
+a{
+  text-decoration: none;
 }
