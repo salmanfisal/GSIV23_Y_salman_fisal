@@ -90,7 +90,6 @@
 
 @media(max-width:768px){
   .cardContainer {
-    position: relative;
     flex: 0 0 calc(45.33% - 10px);
     height: 38vh;
     background-color: white;
@@ -100,6 +99,7 @@
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   }
   .mainCard {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
@@ -115,4 +115,11 @@
     bottom: 70px;
     right:20px;
   }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 1600px;
+    overflow: visible;
+  }
+  
 }
