@@ -88,3 +88,31 @@
   background-color: lightgray;
 }
 
+@media(max-width:768px){
+  .cardContainer {
+    position: relative;
+    flex: 0 0 calc(45.33% - 10px);
+    height: 40vh;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 10px 5px 15px grey;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  .mainCard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    background-color: whitesmoke;
+    padding: 10px;
+    max-height: calc(4 * (30vh + 20px)); 
+  }
+  .rate {
+    position: absolute;
+    font-size: 10px;
+    color: darkgray;
+    font-weight: 800;
+    bottom: 70px;
+    right:20px;
+  }
+}
