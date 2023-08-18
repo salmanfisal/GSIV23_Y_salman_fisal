@@ -2,7 +2,7 @@ import { useState, createContext } from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Card from "./components/card.js";
 import Details from "./components/details.js";
-import { UserContext, GlobalContext } from "./components/customContext.js";
+import { UserContext, GlobalContext } from "./contextApi/customContext.js";
 import NotFound from "./components/notfound.js";
 
 import Nav from "./components/nav.js";
