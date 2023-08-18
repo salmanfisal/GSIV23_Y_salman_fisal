@@ -1,0 +1,45 @@
+.navContainer {
+  width: 100%;
+  z-index: 1;
+  height: 5vh;
+  background-color: rgb(165, 165, 207);
+  position: relative;
+  border-radius:  0px 0px 20px 20px ;
+}
+
+.navItems {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.navInput {
+  width: 25vw;
+  border-radius: 10px;
+  padding: 5px;
+  align-content: center;
+  margin-top: 5px;
+}
+.navRender {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 80px;
+}
+.navImg {
+  object-fit: contain;
+  width: 200px;
+  margin-top: 20px;
+}
+.navContent {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 200px;
+  width: 400px;
+  margin-top: 10px;
+  overflow: hidden;
+  gap: 20px;
+}
