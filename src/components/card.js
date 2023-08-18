@@ -14,12 +14,12 @@ function Card({ inputNav, state }) {
 
   useEffect(() => {
     async function fetching(page) {
-      let apiKey: process.env.REACT_APP_API_KEY;
+      let apiKey: REACT_APP_API_KEY;
       const options = {
         method: "GET",
         headers: {
           accept: "application/json",
-          Authorization: "Bearer process.env.REACT_APP_AUTHORIZATION",
+          Authorization: "Bearer REACT_APP_AUTHORIZATION",
         },
       };
       try {
