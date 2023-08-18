@@ -1,6 +1,5 @@
 import { useState, createContext } from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import "./styles/App.css";
 import Card from "./components/card.js";
 import Details from "./components/details.js";
 import { UserContext, GlobalContext } from "./components/customContext.js";
