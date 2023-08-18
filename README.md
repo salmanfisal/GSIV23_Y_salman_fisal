@@ -117,6 +117,8 @@ This is a Movie Search App that allows users to browse and search for movies usi
              e.title.toLowerCase().includes(nav.toLowerCase()));
             setFilterResult(result);
 
-- After getting the result stored in another state hook and passed that hook to map with the jsx tags like img title description etc
+- After getting the result stored in another state hook and passed that hook to map with the jsx tags like img title description etc..
+
+- Added the pagination to navigate between the pages where i need to modify the url by passing the pages list dynamically..
 
 --------------------------------------------- thankYou -------------------------------------------------------------------
