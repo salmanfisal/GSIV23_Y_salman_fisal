@@ -92,7 +92,7 @@
   .cardContainer {
     position: relative;
     flex: 0 0 calc(45.33% - 10px);
-    height: 40vh;
+    height: 38vh;
     background-color: white;
     border-radius: 12px;
     box-shadow: 10px 5px 15px grey;
@@ -102,7 +102,7 @@
   .mainCard {
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 40px;
     background-color: whitesmoke;
     padding: 10px;
     max-height: calc(4 * (30vh + 20px)); 
