@@ -1,6 +1,6 @@
 import React, { useState, useEffect, } from "react";
 import "../styles/nav.css";
-import { GlobalContext } from "./customContext.js";
+import { GlobalContext } from "../contextApi/customContext.js";
 function Nav({ inputNav }) {
   let base_url = "https://image.tmdb.org/t/p/w200";
   let [nav, setNav] = useState(base_url);

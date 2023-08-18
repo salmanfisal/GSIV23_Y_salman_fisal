@@ -1,7 +1,7 @@
-import "./card.css";
+import "../styles/card.css";
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { GlobalContext } from "./customContext.js";
+import { GlobalContext } from "../contextApi/customContext.js";
 import Nav from "./nav.js";
 
 function Card({ inputNav, state }) {

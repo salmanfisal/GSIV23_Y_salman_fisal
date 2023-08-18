@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/details.css";
 import { useParams } from "react-router-dom";
-import { GlobalContext } from "./customContext.js"
+import { GlobalContext } from "../contextApi/customContext.js"
 function Details() {
   let { id } = useParams();
   let { query } = GlobalContext();
