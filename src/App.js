@@ -9,17 +9,20 @@ import NotFound from "./components/notfound.js";
 import Nav from "./components/nav.js";
 export function App() {
   let [state, setState] = useState("");
-=function inputNav(id){
-  setState(id)
-}
+  function inputNav(id) {
+    setState(id);
+  }
   return (
     <UserContext>
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Card inputNav={inputNav} state={state}/>} />
+            <Route
+              path="/"
+              element={<Card inputNav={inputNav} state={state} />}
+            />
             <Route path="/video/:id" element={<Details />} />
-            <Route path= "*" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </div>
