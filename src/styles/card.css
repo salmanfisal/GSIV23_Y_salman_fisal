@@ -88,7 +88,7 @@
   background-color: lightgray;
 }
 
-@media(max-width:768px){
+@media(max-width:768px ){
   .cardContainer {
     flex: 0 0 calc(45.33% - 10px);
     height: 38vh;

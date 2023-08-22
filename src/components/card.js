@@ -1,54 +1,71 @@
 import "../styles/card.css";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef,useMemo } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../contextApi/customContext.js";
 import Nav from "./nav.js";
 
 function Card({ inputNav, state }) {
-  let [movie, setMovie] = useState("");
+  let [movie, setMovie] = useState([]);
+
   let { handleSearch, input, inputData } = GlobalContext();
   let [currentPage, setCurrentPage] = useState(1);
-  let ref = useRef();
+
+
   let base_url = "https://image.tmdb.org/t/p/w200";
-  const totalPages = 20;
+async function fetching() {
+    let apiKey: process.env.REACT_APP_API_KEY;
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${process.env.REACT_APP_AUTHORIZATION}`,
+      },
+    };
+    try {
+      let response = await fetch(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${currentPage}`,
+        options
+      );
+      let data = await response.json();
+      if (data) {
+         setMovie((prev) => [...prev, ...data.results]);
+        console.log(movie);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    if (input) {
+      setMovie(input);
+      console.log(input);
+    }
+  }
 
   useEffect(() => {
-    async function fetching(page) {
-      let apiKey: process.env.REACT_APP_API_KEY;
-      const options = {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${process.env.REACT_APP_AUTHORIZATION}`,
-        },
-      };
-      try {
-        let response = await fetch(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&page=${page}`,
-          options
-        );
-        let data = await response.json();
-        if (data) {
-          handleSearch(data.results);
-        }
-        ref.current = data.results;
-        setMovie(data.results);
-      } catch (error) {
-        console.log(error);
-      }
-      if (input) {
-        setMovie(input);
-        console.log(input);
-      }
-    }
-    fetching(currentPage);
-  }, [handleSearch, currentPage, input, inputData]);
+    fetching()
+  }, [currentPage,input]);
 
-  const handlePageChange = (newPage) => {
-    if (newPage >= 1 && newPage <= totalPages) {
-      setCurrentPage(newPage);
+  // const handlePageChange = (newPage) => {
+  //   if (newPage >= 1 && newPage <= totalPages) {
+  //     setCurrentPage(newPage);
+  //   }
+  // };
+  useEffect(()=>{
+    handleSearch(movie);
+
+  },[handleSearch,movie])
+ 
+  useEffect(() => {
+    function infiniteScrolling() {
+      if (
+        window.innerHeight + document.documentElement.scrollTop  >= document.documentElement.scrollHeight) {        setCurrentPage((prev) => prev + 1);
+     
+      }
     }
-  };
+
+    window.addEventListener("scroll", infiniteScrolling);
+    return () => window.removeEventListener("scroll", infiniteScrolling);
+  }, [currentPage]);
+
   return (
     <>
       <div className="navBar">
@@ -58,9 +75,9 @@ function Card({ inputNav, state }) {
       <div className={state ? "inputContainer" : "mainCard"}>
         {movie &&
           movie.map((e) => (
-            <div className="cardContainer" key={e.id}>
-              <div className="card">
-                <Link to={`video/${e.id}`} key={e.id}>
+            <div className="cardContainer" >
+              <div className="card" >
+                <Link to={`video/${e.id}`} key={e.backdrop_path}>
                   <img src={`${base_url}${e.poster_path}`} alt={e.title} />
                 </Link>
                 <div className="info">
@@ -79,8 +96,8 @@ function Card({ inputNav, state }) {
               </div>
             </div>
           ))}
-          </div>
-        <div className="pagination">
+      </div>
+      {/* <div className="pagination">
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
@@ -101,9 +118,8 @@ function Card({ inputNav, state }) {
             disabled={currentPage === totalPages}
           >
             Next
-          </button>
-        </div>
-      
+          </button> */}
+      {/* </div> */}
     </>
   );
 }

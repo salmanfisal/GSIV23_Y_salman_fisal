@@ -7,13 +7,14 @@ function Details() {
   let { query } = GlobalContext();
   let selected = query.find((e) => e.id.toString() === id);
   console.log(query)
+  console.log(id)
   return (
     <div className="details">
       {selected && (
         <div className="detailsContainer">
           <img
             className="detailsImg"
-            src={`https://image.tmdb.org/t/p/w200${selected.backdrop_path}`}
+            src={`https://image.tmdb.org/t/p/w400${selected.backdrop_path}`}
             alt={selected.original_title}
           />
           <div className="detailsContent">

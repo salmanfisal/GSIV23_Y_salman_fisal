@@ -1,6 +1,5 @@
 .navContainer {
   width: 100%;
-  z-index: 1;
   height: 5vh;
   background-color: rgb(165, 165, 207);
   position: relative;
@@ -48,3 +47,11 @@
 a{
   text-decoration: none;
 }
+
+.scrollUp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }

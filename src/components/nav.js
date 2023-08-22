@@ -4,6 +4,7 @@ import { GlobalContext } from "../contextApi/customContext.js";
 function Nav({ inputNav }) {
   let base_url = "https://image.tmdb.org/t/p/w200";
   let [nav, setNav] = useState(base_url);
+  let [scroll,setScroll] = useState("down")
   let { query, inputData } = GlobalContext();
   let [filterResult, setFilterResult] = useState([]);
   let result = "";
@@ -16,12 +17,10 @@ function Nav({ inputNav }) {
     inputNav(result);
   }
 
-  useEffect(() => {}, [filterResult, inputData, result]);
-
   return (
     <>
       <div className="navMainContainer">
-        <div className="navContainer">
+        <div className={`navContainer ${scroll === "up" ? "scrollUp" : ""}`}>
           <ul className="navItems">
             <li>
               <input
