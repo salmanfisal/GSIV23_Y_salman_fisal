@@ -1,5 +1,5 @@
 import "../styles/card.css";
-import React, { useState, useEffect, useRef,useMemo } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../contextApi/customContext.js";
 import Nav from "./nav.js";
@@ -10,9 +10,8 @@ function Card({ inputNav, state }) {
   let { handleSearch, input, inputData } = GlobalContext();
   let [currentPage, setCurrentPage] = useState(1);
 
-
   let base_url = "https://image.tmdb.org/t/p/w200";
-async function fetching() {
+  async function fetching() {
     let apiKey: process.env.REACT_APP_API_KEY;
     const options = {
       method: "GET",
@@ -28,7 +27,7 @@ async function fetching() {
       );
       let data = await response.json();
       if (data) {
-         setMovie((prev) => [...prev, ...data.results]);
+        setMovie((prev) => [...prev, ...data.results]);
         console.log(movie);
       }
     } catch (error) {
@@ -41,24 +40,25 @@ async function fetching() {
   }
 
   useEffect(() => {
-    fetching()
-  }, [currentPage,input]);
+    fetching();
+  }, [currentPage, input]);
 
   // const handlePageChange = (newPage) => {
   //   if (newPage >= 1 && newPage <= totalPages) {
   //     setCurrentPage(newPage);
   //   }
   // };
-  useEffect(()=>{
+  useEffect(() => {
     handleSearch(movie);
+  }, [handleSearch, movie]);
 
-  },[handleSearch,movie])
- 
   useEffect(() => {
     function infiniteScrolling() {
       if (
-        window.innerHeight + document.documentElement.scrollTop  >= document.documentElement.scrollHeight) {        setCurrentPage((prev) => prev + 1);
-     
+        window.innerHeight + document.documentElement.scrollTop + 1 >=
+        document.documentElement.scrollHeight
+      ) {
+        setCurrentPage((prev) => prev + 1);
       }
     }
 
@@ -75,8 +75,8 @@ async function fetching() {
       <div className={state ? "inputContainer" : "mainCard"}>
         {movie &&
           movie.map((e) => (
-            <div className="cardContainer" >
-              <div className="card" >
+            <div className="cardContainer">
+              <div className="card">
                 <Link to={`video/${e.id}`} key={e.backdrop_path}>
                   <img src={`${base_url}${e.poster_path}`} alt={e.title} />
                 </Link>
